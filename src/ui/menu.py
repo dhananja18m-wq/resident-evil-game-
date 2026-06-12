@@ -4,7 +4,7 @@ from pathlib import Path
 class MainMenu:
     def __init__(self, game_manager):
         self.game_manager = game_manager
-        self.entity = Entity()
+        self.entity = Entity(model='cube', scale=0)  # Create dummy entity for parenting
         self.setup_background()
         self.setup_ui()
     
@@ -33,16 +33,14 @@ class MainMenu:
             font='assets/fonts/arial.ttf' if Path('assets/fonts/arial.ttf').exists() else None,
             scale=3,
             position=(0, 0.3),
-            color=color.red,
-            parent=self.entity
+            color=color.red
         )
         
         subtitle = Text(
             text='HORROR SURVIVAL',
             scale=1.5,
             position=(0, 0.15),
-            color=color.white,
-            parent=self.entity
+            color=color.white
         )
         
         button_y_start = 0
@@ -54,8 +52,7 @@ class MainMenu:
             scale=0.15,
             color=color.dark_gray,
             highlight_color=color.red,
-            pressed_color=color.dark_red,
-            parent=self.entity
+            pressed_color=color.dark_red
         )
         self.new_game_btn.on_click = self.on_new_game
         
@@ -65,8 +62,7 @@ class MainMenu:
             scale=0.15,
             color=color.dark_gray,
             highlight_color=color.red,
-            pressed_color=color.dark_red,
-            parent=self.entity
+            pressed_color=color.dark_red
         )
         
         self.quit_btn = Button(
@@ -75,8 +71,7 @@ class MainMenu:
             scale=0.15,
             color=color.dark_gray,
             highlight_color=color.red,
-            pressed_color=color.dark_red,
-            parent=self.entity
+            pressed_color=color.dark_red
         )
         self.quit_btn.on_click = self.on_quit
     
